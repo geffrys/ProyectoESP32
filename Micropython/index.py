@@ -1,7 +1,38 @@
 import time
 import urequests
-import ujson
 import machine
+import network
+import ujson
+
+ssid = 'ATEHORTUA'
+password = 'AdriLeo43594'
+
+# Configuración de la conexión Wi-Fi
+sta_if = network.WLAN(network.STA_IF)
+sta_if.active(True)
+sta_if.connect(ssid, password)
+
+# Esperar a que se establezca la conexión
+while not sta_if.isconnected():
+    pass
+
+# Imprimir información de conexión
+print("Conexión Wi-Fi establecida")
+print("Dirección IP:", sta_if.ifconfig()[0])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 BMP280_ADDRESS = 0x76
 
@@ -61,9 +92,8 @@ def send_data_to_database(temperature, presion, humedad):
 
     payload = {'temperatura': temperature, 'presion': presion, 'humedad': humedad}
     print(payload)
-    json_data = ujson.dumps(payload)
-    print(json_data)
-    resp = urequests.post('http://localhost:3000/medicion', json=json_data, timeout=10, data=json_data)
+    data_json = ujson.dumps(payload)
+    resp = urequests.post('http://192.168.20.36:3001/medicion', data=data_json, timeout=10)
     print("response: ", resp.text)
     resp.close()
 

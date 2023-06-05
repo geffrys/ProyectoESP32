@@ -5,6 +5,7 @@ import cors from 'cors'
 config()
 
 const PORT = process.env.SERVER_PORT
+const IP = process.env.IP
 
 const app = express()
 
@@ -31,6 +32,6 @@ app.route('/medicion').post(crearMedicion)
  */
 app.route('/ultima-medicion').get(getUltimaMedicion)
 
-app.listen(PORT, ()=>{
+app.listen(PORT, IP, ()=>{
     console.log(`el servidor se inicio en el puerto ${PORT}`);
 })
