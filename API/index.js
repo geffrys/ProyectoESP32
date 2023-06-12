@@ -32,6 +32,6 @@ app.route('/medicion').post(crearMedicion)
  */
 app.route('/ultima-medicion').get(getUltimaMedicion)
 
-app.listen(PORT, IP, ()=>{
+app.listen(PORT, IP,()=>{
     console.log(`el servidor se inicio en el puerto ${PORT}`);
 })

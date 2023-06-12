@@ -39,7 +39,7 @@ const crearMedicion = async (req, res) => {
     let response
     try {
         response = await query(
-            `INSERT INTO medidas(presion,temperatura,humedad) VALUES (${presion},${temperatura},${humedad})`
+            `INSERT INTO medidas(presion,temperatura,humedad) VALUES ('${presion}','${temperatura}','${humedad}')`
         )
     } catch (error) {
         response = error
