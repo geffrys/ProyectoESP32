@@ -28,7 +28,7 @@ def crearAccessPoint():
 
 # CONEXION A WIFI
 def conectarWifi():
-        # Nombre de tu red Wi-Fi y contraseña
+    # Nombre de tu red Wi-Fi y contraseña
     ssid = "ATEHORTUA"
     password = "AdriLeo43594"
     # Configuración de la conexión Wi-Fi
