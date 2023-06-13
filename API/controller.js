@@ -22,13 +22,12 @@ const getUltimaMedicion = async (req, res) => {
     let respuesta;
     try {
         respuesta = await query(
-            `SELECT * FROM 
+            `SELECT AVG(presion) AS presion, AVG(temperatura) AS temperatura, AVG(humedad) AS humedad FROM 
             medidas ORDER BY id DESC LIMIT 1;`
         )
     } catch (error) {
         respuesta = error
     }
-    console.log(respuesta);
     res.json(respuesta)
 }
 
